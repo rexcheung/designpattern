@@ -6,7 +6,7 @@ import dagger.Component;
  * Created by zxbin on 2018/2/2.
  */
 
-@Component(modules = BeginModule.class)
+@Component(modules = {BeginModule.class, DoubleModule.class})
 public interface BeginComponent {
     void inject(DaggerBeginActivity activity);
 }

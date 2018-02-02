@@ -23,6 +23,9 @@ public class DaggerBeginActivity extends BaseActivity {
     @Inject
     StringBean bean;
 
+    @Inject
+    SecondBean second;
+
     @BindView(R.id.btn_get)
     Button btnGet;
     @BindView(R.id.tv_result)
@@ -43,6 +46,7 @@ public class DaggerBeginActivity extends BaseActivity {
     @OnClick(R.id.btn_get)
     public void onViewClicked() {
         tvResult.setText(bean.msg);
+        tvResult.append("\n" + second.msg);
 
     }
 }

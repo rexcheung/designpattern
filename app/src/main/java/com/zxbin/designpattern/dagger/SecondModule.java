@@ -8,15 +8,10 @@ import dagger.Provides;
  */
 
 @Module
-public class BeginModule {
+public class SecondModule {
 
     @Provides
-    StringBean getBean() {
-        return new StringBean("有参构造函数。");
-    }
-
-    @Provides
-    SecondBean getSecondBean() {
+    SecondBean getBean() {
         return new SecondBean();
     }
 }
