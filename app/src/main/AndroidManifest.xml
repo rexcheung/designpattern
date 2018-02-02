@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".dagger.DaggerMainActivity" />
+        <activity android:name=".dagger.DaggerBeginActivity" />
     </application>
 
 </manifest>
