@@ -1,13 +1,33 @@
 package com.zxbin.designpattern;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+import com.zxbin.commomlib.base.ListActivity;
+import com.zxbin.commomlib.base.TextAdapter;
+import com.zxbin.designpattern.dagger.DaggerMainActivity;
+
+public class MainActivity extends ListActivity {
+
+    private Class[] items = new Class[]{
+            DaggerMainActivity.class,
+
+
+    };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected RecyclerView.Adapter initAdapter() {
+        TextAdapter adapter = new TextAdapter(this);
+        for (Class item : items) {
+            adapter.addData(item.getSimpleName());
+        }
+
+        adapter.setOnItemClickListener(new TextAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position, long id) {
+                startActivity(items[position]);
+            }
+        });
+        return adapter;
     }
 }
