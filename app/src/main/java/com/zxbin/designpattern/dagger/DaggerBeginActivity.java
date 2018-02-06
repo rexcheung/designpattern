@@ -38,6 +38,7 @@ public class DaggerBeginActivity extends BaseActivity {
         ButterKnife.bind(this);
         DaggerBeginComponent
                 .builder()
+                .beginModule(new BeginModule(this))
                 .build()
                 .inject(this);
 

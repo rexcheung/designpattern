@@ -1,5 +1,8 @@
 package com.zxbin.designpattern.dagger;
 
+import android.content.Context;
+import android.util.Log;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -9,6 +12,13 @@ import dagger.Provides;
 
 @Module
 public class BeginModule {
+
+    Context mContext;
+
+    public BeginModule(Context mContext) {
+        this.mContext = mContext;
+        Log.d("BeginModule", "有参构造函数");
+    }
 
     @Provides
     StringBean getBean() {
