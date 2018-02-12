@@ -18,6 +18,10 @@
         </activity>
         <activity android:name=".dagger.DaggerMainActivity" />
         <activity android:name=".dagger.DaggerBeginActivity" />
+        <activity android:name=".prototype.PrototypeMainActivity" />
+        <activity android:name=".prototype.ShallowCopyActivity" />
+        <activity android:name=".prototype.DeepCopyActivity" />
+        <activity android:name=".prototype.PrototypePerformanceActivity" />
     </application>
 
 </manifest>

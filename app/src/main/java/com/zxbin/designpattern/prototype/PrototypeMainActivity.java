@@ -1,33 +1,33 @@
-package com.zxbin.designpattern;
+package com.zxbin.designpattern.prototype;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.zxbin.commomlib.base.ListActivity;
 import com.zxbin.commomlib.base.TextAdapter;
-import com.zxbin.designpattern.dagger.DaggerMainActivity;
-import com.zxbin.designpattern.prototype.PrototypeMainActivity;
 
-public class MainActivity extends ListActivity {
+/**
+ * 原型模式
+ * Created by zxbin on 2018/2/12.
+ */
 
-    private Class[] items = new Class[]{
-            DaggerMainActivity.class,
-            PrototypeMainActivity.class,
-
-
+public class PrototypeMainActivity extends ListActivity {
+    Class[] cls = new Class[]{
+            ShallowCopyActivity.class,
+            DeepCopyActivity.class,
+            PrototypePerformanceActivity.class,
     };
 
     @Override
     protected RecyclerView.Adapter initAdapter() {
         TextAdapter adapter = new TextAdapter(this);
-        for (Class item : items) {
-            adapter.addData(item.getSimpleName());
+        for (Class clz : cls) {
+            adapter.addData(clz.getSimpleName());
         }
-
         adapter.setOnItemClickListener(new TextAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position, long id) {
-                startActivity(items[position]);
+                startActivity(cls[position]);
             }
         });
         return adapter;
