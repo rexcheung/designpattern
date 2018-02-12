@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
+ * new 与 clone的性能对比。
  * Created by zxbin on 2018/2/12.
  */
 
@@ -24,7 +25,7 @@ public class PrototypePerformanceActivity extends BaseActivity {
     @BindView(R.id.tv_result)
     TextView tvResult;
 
-    private final int COUNT = 100000;
+    private final int COUNT = 10000;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,14 +34,14 @@ public class PrototypePerformanceActivity extends BaseActivity {
         ButterKnife.bind(this);
         btnGet.setText("性能对比");
         tvResult.append(String.valueOf(COUNT));
-        tvResult.append("个Bean， new 与 Clone性能对比，可以看到，new 的耗时比clone多一倍。");
+        tvResult.append("个Bean， new 与 Clone性能对比，new 的耗时居然比clone少。");
     }
 
 
     @OnClick(R.id.btn_get)
     public void onViewClicked() {
-        long newTime = newOperator();
         long cloneOperator = cloneOperator();
+        long newTime = newOperator();
         StringBuilder sb = new StringBuilder(100);
         sb.append("new 用时:")
                 .append(newTime)
@@ -55,9 +56,9 @@ public class PrototypePerformanceActivity extends BaseActivity {
         ArrayList<CopyBean> newList = new ArrayList<>();
         CopyBean source = new CopyBean();
         for (int i = 0; i < COUNT; i++) {
+            CopyBean clone = null;
             try {
-                CopyBean clone = (CopyBean) source.clone();
-                clone.inner = (InnerBean) source.inner.clone();
+                clone = source.clone();
                 newList.add(clone);
             } catch (CloneNotSupportedException e) {
                 e.printStackTrace();

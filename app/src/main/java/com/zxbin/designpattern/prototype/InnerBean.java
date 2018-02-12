@@ -8,7 +8,7 @@ public class InnerBean implements Cloneable{
     public String msg = "InnerBean";
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    protected InnerBean clone() throws CloneNotSupportedException {
+        return (InnerBean) super.clone();
     }
 }
